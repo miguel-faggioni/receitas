@@ -1,0 +1,148 @@
+/************************************ Small adjustments */
+.red{
+    text-decoration: underline;
+    text-decoration-color:#F44336;
+}
+ul,li{
+    font-size:15px;
+}
+input[type="submit"]{
+  display: inline;
+  padding: 0 1em 0 1em;
+  color: #fff;
+  background: #16a085; /* cor1 */
+  font-weight: bold;
+  line-height:2.94;
+  border: 0;
+  width:10%;
+}
+form>input[type="text"]{
+  width:90%;
+  float: right;
+  border: 1px solid #1abc9c; /* cor2 */
+  padding: 10px;
+}
+form{
+  display: inline;
+}
+.tab input:checked + label>form>span{
+  font-size:12px;
+  text-transform: none;
+  display: inline;
+}
+.tab input + label>form>span{
+  font-size:12px;
+  text-transform: none;
+  display:none;
+}
+form input[type="submit"].full{
+  width:100%;
+  background: #1abc9c; /* cor2 */
+}
+/************************************ END-Small adjustments */
+
+/************************************ Acordeon styles */
+.tab {
+  position: relative;
+  margin-top: 1px;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+}
+.tab input[type=checkbox]{
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label {
+  text-transform: capitalize;
+  position: relative;
+  display: block;
+  padding: 0 0 0 1em;
+  background: #16a085; /* cor1 */
+  font-weight: bold;
+  line-height: 3;
+  cursor: pointer;
+}
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #1abc9c; /* cor2 */
+}
+.tab-content p {
+  margin: 1em;
+}
+/* :checked */
+input[type=checkbox]:checked ~ .tab-content {
+  max-height: none;
+}
+/* Icon */
+label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+input[type=checkbox] + label::after {
+  content: "+";
+}
+input[type=checkbox]:checked + label::after {
+  transform: rotate(225deg);
+}
+/************************************ END-Acordeon styles */
+
+/************************************ Tree-like styles */
+.tree,
+.tree ul {
+  margin:0 0 0 1em; /* indentation */
+  padding:0;
+  list-style:none;
+  /* color:#369; */
+  position:relative;
+}
+.tree ul {margin-left:.5em} /* (indentation/2) */
+.tree:before,
+.tree ul:before {
+  content:"";
+  display:block;
+  width:0;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  border-left:1px solid;
+}
+.tree li {
+  margin:0;
+  padding:0 1.5em; /* indentation + .5em */
+  line-height:2em; /* default list item's `line-height` */
+  font-weight:bold;
+  position:relative;
+}
+.tree li:before {
+  content:"";
+  display:block;
+  width:10px; /* same with indentation */
+  height:0;
+  padding-right:5;
+  border-top:1px solid;
+  margin-top:-1px; /* border top width */
+  position:absolute;
+  top:1em; /* (line-height/2) */
+  left:0;
+}
+.tree li:last-child:before {
+  background:#1abc9c; /* same with body background */ /* cor2 */
+  height:auto;
+  top:1em; /* (line-height/2) */
+  bottom:0;
+}
+/************************************ END-Tree-like styles */
+

@@ -84,6 +84,7 @@ if( isset($_GET['id']) and !empty($_GET['id'])){
   $all = json_decode($result);
 }
 
+// imprime cada receita em $all
 foreach($all as $r){
     print('<div class="tab">');
     print('<input id="'.$r->_id.'" type="checkbox" name="tabs">');
@@ -115,7 +116,9 @@ foreach($all as $r){
     print('<ul>');
     foreach($r->ingredientes as $i){
         print('<li>');
-        print($i->qtde.' '.$i->unid.' - '.$i->oque);
+        print($i->qtde.' ');
+        if($i->unid) print($i->unid.' - ');
+        print($i->oque);
         print('</li>');
     }
     print('</ul>');

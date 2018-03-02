@@ -14,10 +14,12 @@ input[type="submit"]{
   font-weight: bold;
   line-height:2.94;
   border: 0;
-  width:10%;
+  width: 100px;
 }
 form>input[type="text"]{
-  width:90%;
+  width: -moz-calc(100% - 100px);
+  width: -webkit-calc(100% - 100px);
+  width: calc(100% - 100px);
   float: right;
   border: 1px solid #1abc9c; /* cor2 */
   padding: 10px;
@@ -38,6 +40,10 @@ form{
 form input[type="submit"].full{
   width:100%;
   background: #1abc9c; /* cor2 */
+}
+.tree textarea,
+.tree input{
+  width: 100%;
 }
 /************************************ END-Small adjustments */
 

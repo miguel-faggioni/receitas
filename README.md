@@ -16,11 +16,15 @@ Instale os pacotes com
 
 Para subir a API, rode:
 
-`$ npm run start`
+`$ npm run back`
 
 Para subir o front-end, rode:
 
 `$ php -S 0.0.0.0:3001 -t front/`
+
+ou
+
+`$ npm run front`
 
 ### Rotas da API
 

@@ -6,7 +6,7 @@
   "author": "Miguel F.",
   "license": "AGPLv3.0",
   "scripts": {
-    "start": "nodemon server.js",
+    "back": "nodemon server.js",
     "front": "php -S 0.0.0.0:3001 -t front/"
   },
   "dependencies": {

@@ -4,8 +4,7 @@ var Schema = mongoose.Schema;
 
 var DBingrediente = new Schema({
   qtde: {
-    type: Number,
-    required: 'quantidade'
+    type: Number
   },
   unid: {
     type: String

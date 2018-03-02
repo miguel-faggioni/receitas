@@ -116,7 +116,7 @@ foreach($all as $r){
     print('<ul>');
     foreach($r->ingredientes as $i){
         print('<li>');
-        print($i->qtde.' ');
+        if($i->qtde) print(round($i->qtde,1).' ');
         if($i->unid) print($i->unid.' - ');
         print($i->oque);
         print('</li>');

@@ -12,6 +12,7 @@ exports.list_all = function(req, res) {
   });
 };
 
+// sanitiza os campos
 function sanitize(body){
   for(let i = 0; i< body.ingredientes.length;i++){
     body.ingredientes[i].qtde = eval(body.ingredientes[i].qtde // avalia a fração/soma

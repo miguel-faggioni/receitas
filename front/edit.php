@@ -14,7 +14,7 @@
 </form>
 
 <?php
-
+$new = false;
 if( ( isset($_POST['r_ingredientes']) and !empty($_POST['r_ingredientes']) )
  or (       isset($_POST['r_passos']) and !empty($_POST['r_passos'])       ) ){
   $is = $_POST['r_ingredientes'];
@@ -27,10 +27,20 @@ if( ( isset($_POST['r_ingredientes']) and !empty($_POST['r_ingredientes']) )
   foreach(explode('@',str_replace("\n",'@',$is)) as $i){
     $i = trim($i);
     if(!$i){ continue; }
+    // adiciona vírgulas conforme a necessidade
+    switch(substr_count($i,',')){
+      case 0: //ex: sal
+        $i = ",,".$i;
+        break;
+      case 1: //ex: 1,cebola
+        $i = str_replace(",",",,",$i);
+        break;
+      case 2: //ex: 100,g,carne
+        break;
+    }
     $tmp = explode(',',$i);
     $ingredientes[] = array('qtde' => $tmp[0], 'unid' => $tmp[1], 'oque' => implode(',',array_slice($tmp,2)));
   }
-
   $passos = array();
   foreach(explode('@',str_replace("\n",'@',$ps)) as $p){
     $p = trim($p);

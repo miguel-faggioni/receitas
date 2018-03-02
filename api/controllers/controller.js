@@ -12,16 +12,24 @@ exports.list_all = function(req, res) {
   });
 };
 
+function sanitize(body){
+  for(let i = 0; i< body.ingredientes.length;i++){
+    body.ingredientes[i].qtde = eval(body.ingredientes[i].qtde // avalia a fração/soma
+                                     .replace(/ +/,'+')   // troca 1 ou mais espaços por '+'
+                                     .replace(/^\+/,'')   // remove '+' no início
+                                     .replace(/\+$/,'')); // remove '+' no fim
+  }
+}
+
 // cria a receita recebida em req.body
 exports.create = function(req, res) {
-  console.log(req.body.ingredientes);
-  for(let i = 0; i< req.body.ingredientes.length;i++){
-    req.body.ingredientes[i].qtde = eval(req.body.ingredientes[i].qtde);
-  }
+  sanitize(req.body);
   var new_task = new DB(req.body);
   new_task.save(function(err, task) {
-    if (err)
+    if (err){
+      console.log(err);
       res.send(err);
+    }
     res.json(task);
   });
 };
@@ -29,8 +37,10 @@ exports.create = function(req, res) {
 // retorna a receita com id = :id
 exports.get_by_id = function(req, res) {
   DB.findById(req.params.id, function(err, task) {
-    if (err)
+    if (err){
+      console.log(err);
       res.send(err);
+    }
     res.json(task);
   });
 };
@@ -39,9 +49,12 @@ exports.get_by_id = function(req, res) {
 // se a receita nao existe, cria
 // retorna a receita atualizada
 exports.update_by_id = function(req, res) {
+  sanitize(req.body);  
   DB.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
-    if (err)
+    if (err){
+      console.log(err);
       res.json({ message: 'Item com id: '+req.params.id+' não foi encontrado'});
+    }
     res.json(task);
   });
 };
@@ -51,8 +64,10 @@ exports.delete_by_id = function(req, res) {
   DB.remove({
     _id: req.params.id
   }, function(err, task) {
-    if (err)
+    if (err){
+      console.log(err);
       res.send(err);
+    }
     res.json({ message: 'Item removido com sucesso (id: '+req.params.id+')'});
   });
 };

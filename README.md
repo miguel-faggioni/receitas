@@ -1,5 +1,7 @@
 # Banco local de receitas
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/7c5cb9160e27f5ba92f8/maintainability)](https://codeclimate.com/github/miguel-faggioni/receitas/maintainability)
+
 Este projeto proporciona uma interface web e uma API para criação, leitura, update, busca e deleção de receitas a partir de um banco mongoDB local
 
 ## Dependências

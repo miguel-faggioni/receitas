@@ -10,7 +10,7 @@
     "front": "php -S 0.0.0.0:3001 -t front/"
   },
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "mongoose": "^5.0.4",
     "nodemon": "^1.14.12"
   }
